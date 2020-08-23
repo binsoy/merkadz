@@ -13,7 +13,7 @@ dotenv.config();
 
 //connect to DB
 mongoose.connect(
-  process.env.MONGODB_URI,
+  process.env.MONGOLAB_BROWN_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -33,4 +33,4 @@ app.use("/api/post", postRouter);
 //   app.use(express.static('client/build'))
 // }
 
-app.listen(PORT, () => console.log("Sever up and running"));
+app.listen(PORT, () => console.log(`Sever up and running at port ${PORT}`));

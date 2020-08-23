@@ -13,7 +13,7 @@ dotenv.config();
 
 //connect to DB
 mongoose.connect(
-  process.env.MONGOLAB_BROWN_URI,
+  process.env.MONGODB_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

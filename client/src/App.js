@@ -87,9 +87,7 @@ function App() {
         posts.splice(indexToRemove, 1);
         setPosts([...posts]);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   };
 
   return (

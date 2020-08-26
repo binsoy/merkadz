@@ -31,13 +31,13 @@ router.post("/login", async (req, res) => {
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).json({ message: "Invalid password" });
 
-  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, {
+  const token = jwt.sign({ user }, process.env.TOKEN_SECRET, {
     expiresIn: "1h",
   });
 
   res
     .status(200)
-    .header("auth-token", `Bearer ${token}`)
+    .header("authorization", `Bearer ${token}`)
     .json({ token: token });
 });
 

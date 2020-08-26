@@ -6,8 +6,8 @@ const app = express();
 // for Heroku
 const PORT = process.env.PORT || 8080;
 
-const userRouter = require("./handlers/user");
-const postRouter = require("./handlers/post");
+const userRouter = require("./routers/user");
+const postRouter = require("./routers/post");
 
 dotenv.config();
 
@@ -25,12 +25,12 @@ mongoose.connect(
 
 app.use(express.json());
 
-app.use("/api/user", userRouter);
-app.use("/api/post", postRouter);
+app.use("/api/users", userRouter);
+app.use("/api/posts", postRouter);
 
 // Step 3: for React deployment
-// if(process.env.NODE_ENV === 'production'){
-//   app.use(express.static('client/build'))
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 app.listen(PORT, () => console.log(`Sever up and running at port ${PORT}`));

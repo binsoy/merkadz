@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 8080;
 
 const userRouter = require("./routers/user");
 const postRouter = require("./routers/post");
+const commentRouter = require("./routers/comment");
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use(express.json());
 
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
+app.use("/api/comments", commentRouter);
 
 // Step 3: for React deployment
 if (process.env.NODE_ENV === "production") {

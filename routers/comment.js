@@ -1,6 +1,10 @@
 const router = require("express").Router();
-const Comment = require("../model/Comment");
+const CommentSchema = require("../model/Comment");
 const auth = require("../util/auth");
+const mongoose = require("../util/dbConnection");
+
+//Models
+const Comment = mongoose.model("Comment", CommentSchema);
 
 /** GET ALL COMMENTS OF A POST */
 router.get("/:postId", auth, async (req, res) => {

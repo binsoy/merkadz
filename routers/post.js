@@ -1,7 +1,11 @@
 const router = require("express").Router();
-const Post = require("../model/Post");
+const PostSchema = require("../model/Post");
 const auth = require("../util/auth");
 const crypto = require("crypto");
+const mongoose = require("../util/dbConnection");
+
+// Models
+const Post = mongoose.model("Post", PostSchema);
 
 /** GET ALL POSTS */
 router.get("/", async (req, res) => {

@@ -1,9 +1,14 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../model/User");
-const Notification = require("../model/Notification");
+const UserSchema = require("../model/User");
+const NotificationSchema = require("../model/Notification");
 const auth = require("../util/auth");
+const mongoose = require("../util/dbConnection");
+
+// Models
+const User = mongoose.model("User", UserSchema);
+const Notification = mongoose.model("Notification", NotificationSchema);
 
 /** USER SIGNUP */
 router.post("/signup", async (req, res) => {

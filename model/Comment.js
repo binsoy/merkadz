@@ -2,32 +2,22 @@ const { Mongoose } = require("mongoose");
 
 const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema({
-  _id: {
-    type: String,
-    max: 1024,
-    required: true,
-  },
+const commentSchema = new mongoose.Schema({
   userHandle: {
     type: String,
     required: true,
     max: 255,
+  },
+  postId: {
+    type: String,
+    max: 1024,
+    required: true,
   },
   body: {
     type: String,
     required: true,
     max: 1024,
   },
-  commentCount: {
-    type: Number,
-    default: 0,
-  },
-  postImages: [
-    {
-      type: String,
-      max: 1024,
-    },
-  ],
   createdAt: {
     type: String,
     default: new Date().toISOString(),
@@ -38,4 +28,4 @@ const postSchema = new mongoose.Schema({
   },
 });
 
-module.exports = postSchema;
+module.exports = commentSchema;

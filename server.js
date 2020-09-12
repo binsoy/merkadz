@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const app = express();
 
@@ -8,25 +7,16 @@ const PORT = process.env.PORT || 8080;
 
 const userRouter = require("./routers/user");
 const postRouter = require("./routers/post");
+const commentRouter = require("./routers/comment");
+const uploadRouter = require("./routers/upload");
 
 dotenv.config();
-
-//connect to DB
-mongoose.connect(
-  process.env.MONGODB_URI,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  },
-  () => console.log("Connected to DB")
-);
-
 app.use(express.json());
 
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
+app.use("/api/comments", commentRouter);
+app.use("/api/upload", uploadRouter);
 
 // Step 3: for React deployment
 if (process.env.NODE_ENV === "production") {
